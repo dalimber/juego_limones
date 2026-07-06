@@ -2,7 +2,9 @@ let canvas=document.getElementById("areaJuego");
 let ctx=canvas.getContext("2d");
 let puntaje=0;
 let vidas=3;
-let velocidadCaida=100;
+let velocidadCaida=200;
+let intervalo;
+
 
 
 const ALTURA_SUELO=25;
@@ -20,7 +22,9 @@ function iniciar()
     dibujarSuelo();
     dibujarPersonaje();
     aparecerLimon();
-    setInterval(bajarLimon,velocidadCaida);
+    intervalo=setInterval(bajarLimon,velocidadCaida);
+    
+    
     
 }
 
@@ -44,7 +48,7 @@ function bajarLimon()
 {
  limonY=limonY+10;
  actualizarPantalla();
- detectarColision();
+ detectarAtrapado();
  detectarPiso();
 }
 function moverIzquierda() 
@@ -70,7 +74,7 @@ function actualizarPantalla()
     dibujarLimon();
 }
 
-function detectarColision() 
+function detectarAtrapado() 
 {
     if (limonX+ANCHO_LIMON>personajeX &&
         limonX<personajeX+ANCHO_PERSONAJE && 
@@ -79,7 +83,24 @@ function detectarColision()
         { //alert("LIMON ATRAPADO");
             aparecerLimon();  
             puntaje=puntaje+1;
-            mostrarEnSpan("txtPuntaje", puntaje);     
+            mostrarEnSpan("txtPuntaje", puntaje);
+            if (puntaje==3) 
+            {
+            clearInterval(intervalo);
+            velocidadCaida=150;
+            intervalo=setInterval(bajarLimon,velocidadCaida);
+            }
+            else if (puntaje==6) 
+                {
+                clearInterval(intervalo);
+                velocidadCaida=100;
+                intervalo=setInterval(bajarLimon,velocidadCaida);
+                }
+                else if (puntaje==10) 
+                {
+                alert("HAS GANADO, GRAN TRABAJO");
+                clearInterval(intervalo);
+                }     
     }     
 }
 function detectarPiso() 
@@ -92,6 +113,7 @@ function detectarPiso()
             if (vidas==0) 
             {
                 alert("GAME OVER");
+                clearInterval(intervalo);
             }
         }
     
