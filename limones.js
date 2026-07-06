@@ -2,6 +2,7 @@ let canvas=document.getElementById("areaJuego");
 let ctx=canvas.getContext("2d");
 let puntaje=0;
 let vidas=3;
+let velocidadCaida=100;
 
 
 const ALTURA_SUELO=25;
@@ -19,6 +20,7 @@ function iniciar()
     dibujarSuelo();
     dibujarPersonaje();
     aparecerLimon();
+    setInterval(bajarLimon,velocidadCaida);
     
 }
 
