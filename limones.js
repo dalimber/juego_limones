@@ -23,9 +23,6 @@ function iniciar()
     dibujarPersonaje();
     aparecerLimon();
     intervalo=setInterval(bajarLimon,velocidadCaida);
-    
-    
-    
 }
 
 function dibujarSuelo () 
@@ -125,6 +122,16 @@ function aparecerLimon()
     console.log(limonX);
     limonY=0;
     actualizarPantalla();   
+}
+
+function reiniciar() 
+{
+    vidas=3;
+    puntaje=0;
+    mostrarEnSpan("txtVidas",vidas);
+    mostrarEnSpan("txtPuntaje",puntaje);
+    velocidadCaida=200;
+    iniciar();
 }
 
 function generarAleatorio(min,max) 
