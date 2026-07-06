@@ -1,5 +1,8 @@
 let canvas=document.getElementById("areaJuego");
 let ctx=canvas.getContext("2d");
+let puntaje=0;
+let vidas=3;
+
 
 const ALTURA_SUELO=25;
 const ALTURA_PERSONAJE=50;
@@ -40,6 +43,7 @@ function bajarLimon()
  limonY=limonY+10;
  actualizarPantalla();
  detectarColision();
+ detectarPiso();
 }
 function moverIzquierda() 
 {
@@ -70,8 +74,21 @@ function detectarColision()
         limonX<personajeX+ANCHO_PERSONAJE && 
         limonY+ALTO_LIMON>personajeY &&
         limonY<personajeY+ALTURA_PERSONAJE) 
-        { alert("LIMON ATRAPADO");   
+        { //alert("LIMON ATRAPADO");
+            aparecerLimon();  
+            puntaje=puntaje+1;
+            mostrarEnSpan("txtPuntaje", puntaje);     
     }     
+}
+function detectarPiso() 
+{
+    if (limonY+ALTO_LIMON>=canvas.height-ALTURA_SUELO) 
+        {
+            aparecerLimon();
+            vidas=vidas-1;
+            mostrarEnSpan("txtVidas", vidas);
+        }
+    
 }
 function aparecerLimon() 
 {
@@ -86,6 +103,10 @@ function generarAleatorio(min,max)
     let random=Math.random();
     let numero=random*(max);
     let numeroEntero=parseInt(numero);
-    return numeroEntero;
-    
+    return numeroEntero; 
+}
+function mostrarEnSpan(idSpan,valor) 
+{
+    let cmpSpan=document.getElementById(idSpan);
+    cmpSpan.textContent=valor;
 }
