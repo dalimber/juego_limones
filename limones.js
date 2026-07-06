@@ -130,6 +130,7 @@ function reiniciar()
     puntaje=0;
     mostrarEnSpan("txtVidas",vidas);
     mostrarEnSpan("txtPuntaje",puntaje);
+    clearInterval(intervalo);
     velocidadCaida=200;
     iniciar();
 }
