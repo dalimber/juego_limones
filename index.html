@@ -1,28 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Caza Limones</title>
-  <link rel="stylesheet" href="limones.css">
- 
- 
+    <meta charset="UTF-8">
+    <title>Caza Limones</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fuente retro -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="limones.css">
 </head>
+
 <body onload="iniciar()">
-  <div class="contenedor">
-    <h1>Atrapar Limones</h1>
-    <p>Si del cielo te caen limones, te hara falta un encebollado </p>
-    <h2>Autor: Andrade Javier</h2>
-    <canvas id="areaJuego" width="500" height="500"></canvas>
-    
+
+<div class="contenedor">
+
+    <h1>ATRAPAR LIMONES</h1>
+
+    <p class="frase">
+        Si del cielo te caen limones,<br>
+        te hará falta un encebollado.
+    </p>
+
+    <div class="juego">
+
+    <canvas id="areaJuego" width="500" height="300"></canvas>
+
     <div class="panel">
-      <p>Puntaje: <span id="txtPuntaje">0</span></p>
-      <p>Vidas: <span id="txtVidas">3</span></p>
+
+        <div class="card">
+            <span class="tituloCard">PUNTAJE</span>
+            <span id="txtPuntaje">0</span>
+        </div>
+
+        <div class="card">
+            <span class="tituloCard">VIDAS</span>
+            <span id="txtVidas">3</span>
+        </div>
+
     </div>
+
+</div>
+
     <div class="botones">
-      <button onclick="moverIzquierda()">Izquierda</button>
-      <button onclick="moverDerecha()">Derecha</button>
-      <button onclick="reiniciar()">Reiniciar</button>
+
+        <div class="movimiento">
+
+            <button onclick="moverIzquierda()">
+                ◀ IZQUIERDA
+            </button>
+
+            <button onclick="moverDerecha()">
+                DERECHA ▶
+            </button>
+
+        </div>
+
+        <button class="reiniciar" onclick="reiniciar()">
+            REINICIAR
+        </button>
+
     </div>
-  </div>
-  <script src="limones.js"></script>
+
+    <h2>Autor: Andrade Javier</h2>
+
+</div>
+
+<script src="limones.js"></script>
+
 </body>
 </html>
