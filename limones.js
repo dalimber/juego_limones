@@ -150,5 +150,6 @@ function mostrarEnSpan(idSpan,valor)
 
 function desaparecerPersonaje() 
 {
-    ctx.clearRect(canvas.width,canvas.height,ALTURA_PERSONAJE,ANCHO_PERSONAJE);
+    ctx.clearRect(0,canvas.height-(ALTURA_PERSONAJE+ALTURA_SUELO),canvas.width,ALTURA_PERSONAJE);
+    clearInterval(intervalo);
 }
