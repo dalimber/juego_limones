@@ -8,10 +8,10 @@ let intervalo;
 
 
 const ALTURA_SUELO=25;
-const ALTURA_PERSONAJE=50;
-const ANCHO_PERSONAJE=30;
-const ALTO_LIMON=20;
-const ANCHO_LIMON=20;
+const ALTURA_PERSONAJE=70;
+const ANCHO_PERSONAJE=50;
+const ALTO_LIMON=35;
+const ANCHO_LIMON=30;
 
 let personajeX=canvas.width/2;
 let personajeY=canvas.height-(ALTURA_SUELO+ALTURA_PERSONAJE);
@@ -32,12 +32,12 @@ function dibujarSuelo ()
 }
 function dibujarPersonaje () 
 {
-    ctx.fillStyle="yellow";
+    ctx.fillStyle="green";
     ctx.fillRect(personajeX,personajeY,ANCHO_PERSONAJE,ALTURA_PERSONAJE);
 }
 function dibujarLimon() 
 {
-    ctx.fillStyle="green";
+    ctx.fillStyle="red";
     ctx.fillRect(limonX,limonY,ANCHO_LIMON,ALTO_LIMON);
 }
 
@@ -109,7 +109,7 @@ function detectarPiso()
             mostrarEnSpan("txtVidas", vidas);
             if (vidas==0) 
             {
-                alert("GAME OVER");
+                alert("HAS PERDIDO VUELVE A INTENTARLO");
                 clearInterval(intervalo);
             }
         }
@@ -146,4 +146,9 @@ function mostrarEnSpan(idSpan,valor)
 {
     let cmpSpan=document.getElementById(idSpan);
     cmpSpan.textContent=valor;
+}
+
+function desaparecerPersonaje() 
+{
+    ctx.clearRect(canvas.width,canvas.height,ALTURA_PERSONAJE,ANCHO_PERSONAJE);
 }
